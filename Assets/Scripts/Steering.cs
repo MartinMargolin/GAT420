@@ -41,15 +41,15 @@ public class Steering : MonoBehaviour
         return force;
     }
 
-    Vector3 CalculateSteering(AutonomousAgent agent, Vector3 vector)
+    public Vector3 CalculateSteering(AutonomousAgent agent, Vector3 vector)
     {
         Vector3 direction = vector.normalized;
 
-        Vector3 desired = direction * agent.maxSpeed;
+        Vector3 desired = direction * agent.movement.maxSpeed;
 
-        Vector3 steer = desired - agent.velocity;
+        Vector3 steer = desired - agent.movement.velocity;
 
-        Vector3 force = Vector3.ClampMagnitude(steer, agent.maxForce);
+        Vector3 force = Vector3.ClampMagnitude(steer, agent.movement.maxForce);
 
         return force;
 
